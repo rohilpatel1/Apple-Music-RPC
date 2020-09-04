@@ -14,7 +14,7 @@ class iTunes {
       if (os.platform() == "win32") {
         this.currentSong = JSON.parse(execSync("cscript //Nologo ./libs/iTunesBridge/iTunesBridgeWS.js currentTrack", { encoding: "utf8" }));
       } else if (os.platform() == "darwin") {
-        this.currentSong = JSON.parse(execSync(`oascript ./libs/iTunesBridge/iTunesBridgeOA currentTrack`, { encoding: "utf8" }));
+        this.currentSong = JSON.parse(execSync(`osascript ./libs/iTunesBridge/iTunesBridgeOA.js currentTrack`, { encoding: "utf8" }));
       }
     } catch (e) {
       this.currentSong = {
@@ -27,7 +27,7 @@ class iTunes {
     if (os.platform() == "win32") {
       return JSON.parse(execSync("cscript //Nologo ./libs/iTunesBridge/iTunesBridgeWS.js " + option, { encoding: "utf8" }));
     } else if (os.platform() == "darwin") {
-      return JSON.parse(execSync(`oascript ./libs/iTunesBridge/iTunesBridgeOA ${option}`, { encoding: "utf8" }));
+      return JSON.parse(execSync(`osascript ./libs/iTunesBridge/iTunesBridgeOA.js ${option}`, { encoding: "utf8" }));
     }
   }
 
@@ -35,7 +35,7 @@ class iTunes {
     if (os.platform() == "win32") {
       this.currentSong = JSON.parse(execSync("cscript //Nologo ./libs/iTunesBridge/iTunesBridgeWS.js currentTrack", { encoding: "utf8" }));
     } else if (os.platform() == "darwin") {
-      this.currentSong = JSON.parse(execSync(`oascript ./libs/iTunesBridge/iTunesBridgeOA currentTrack`, { encoding: "utf8" }));
+      this.currentSong = JSON.parse(execSync(`osascript ./libs/iTunesBridge/iTunesBridgeOA.js currentTrack`, { encoding: "utf8" }));
     }
     return this.currentSong;
   }

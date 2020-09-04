@@ -1,12 +1,22 @@
 const APP = Application.currentApplication();
-const iTunesApp = Application('iTunes');
+const iTunesApp = Application('Music');
+
+APP.includeStandardAdditions = true;
 
 ObjC.import('Foundation');
-const argv = $.NSProcessInfo.processInfo.arguments.js;
 
 function getPlayerState() {
   if (!iTunesApp) return "Not Opened";
-  return iTunesApp.playerState();
+  switch (iTunesApp.playerState()) {
+    case "playing":
+      return "Playing";
+    case "stopped":
+      return "Stopped";
+    case "paused":
+      return "Paused";
+    default:
+      return "Stopped";
+  }
 }
 
 function getCurrentTrack() {
@@ -21,7 +31,7 @@ function getCurrentTrack() {
       duration: currentTrack.duration(),
       genre: currentTrack.genre(),
       year: currentTrack.year(),
-      elapsed: iTunesApp.PlayerPosition(),
+      elapsed: iTunesApp.playerPosition(),
       state: getPlayerState()
     };
   } catch (e) {
@@ -33,12 +43,14 @@ function getCurrentTrack() {
   return JSON.stringify(data);
 }
 
-switch(argv[0]) {
-  case "currentTrack":
-    return getCurrentTrack();
-  case "playerState":
-    return getPlayerState();
-  case "play":
-    iTunes.play();
-    break;
+function run(argv) {
+  switch(argv[0]) {
+    case "currentTrack":
+      return getCurrentTrack();
+    case "playerState":
+      return getPlayerState();
+    case "play":
+      iTunes.play();
+      break;
+  }
 }

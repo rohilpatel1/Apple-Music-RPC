@@ -3,7 +3,6 @@ const { execSync } = require("child_process");
 const client = require("discord-rich-presence")('749704287176622170');
 
 const iTunes = require("./libs/iTunesBridge/iTunesBridge");
-const { start } = require('repl');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
