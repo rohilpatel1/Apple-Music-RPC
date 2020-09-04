@@ -76,6 +76,7 @@ app.on('certificate-error', function(event, webContents, url, error,
 
 /* RPC BELOW */
 
+const iTunesApp = new iTunes();
 let RPCInterval = 0;
 let lastSong = "";
 let startDate = new Date();
@@ -86,24 +87,23 @@ function setupRPC() {
 }
 
 function updatePresence() {
-  const iTunesApp = new iTunes();
   const currentSong = iTunesApp.getCurrentSong();
   let state = currentSong.state;
 
-  const fullTitle = `${currentSong.artist} - ${currentSong.name}`;
+  const fullTitle = `${currentSong.artist || "No Artist"} - ${currentSong.name}`;
   
   if (state == "Playing" && (fullTitle !== lastSong || !lastSong)) {
     startDate = new Date();
-    lastSong = `${currentSong.artist} - ${currentSong.name}`;
+    lastSong = `${currentSong.artist || "No Artist"} - ${currentSong.name}`;
     startDate.setSeconds(new Date().getSeconds() - parseInt(currentSong.elapsed));
   }
 
   client.updatePresence({
-    state: (state == "Playing") ? `by ${currentSong.artist}` : state,
+    state: (state == "Playing") ? `by ${currentSong.artist || "No Artist"}` : state,
     details: currentSong.name,
     startTimestamp: (state == "Playing") ? startDate.getTime() : Date.now(),
     largeImageKey: 'music',
-    smallImageKey: 'pause',
+    smallImageKey: (state == "Playing") ? "pause" : "play",
     smallImageText: state,
     largeImageText: (state == "Playing") ? `${fullTitle}` : "Idling",
     instance: true,

@@ -9,9 +9,10 @@ var JSON;JSON||(JSON={});
 var iTunesApp = WScript.createObject("iTunes.Application");
 
 function getPlayerState() {
+  if (!iTunesApp) return "Not Opened";
   switch (iTunesApp.PlayerState) {
     case 0:
-      if (iTunesApp.currentTrack.name) {
+      if (iTunesApp && iTunesApp.currentTrack.name) {
         return "Paused";
       }
       return "Stopped";
