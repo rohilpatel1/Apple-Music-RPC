@@ -1,0 +1,30 @@
+{
+  "name": "itunes-discord-rich-presense",
+  "version": "1.0.0",
+  "description": "Discord Rich Presense for Apple Music and iTunes (no subscription needed to work)",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron .",
+    "pack:osx": "electron-packager . repl.it --out=dist/osx --platform=darwin --arch=x64 --overwrite",
+    "pack:win32": "electron-packager . repl.it --out=dist/win --platform=win32 --arch=ia32 --icon=icons/icon.ico --overwrite",
+    "pack:win64": "electron-packager . repl.it --out=dist/win --platform=win32 --arch=x64 app-version=1.1 --icon=icons/icon.ico --overwrite",
+    "build": "npm run pack:win64 && npm run pack:win32 && npm run pack:osx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohilpatel1/iTunes-Discord-Rich-Presense.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohilpatel1/iTunes-Discord-Rich-Presense/issues"
+  },
+  "homepage": "https://github.com/rohilpatel1/iTunes-Discord-Rich-Presense#readme",
+  "devDependencies": {
+    "electron": "^10.1.1"
+  },
+  "dependencies": {
+    "discord-rich-presence": "0.0.8",
+    "itunes-bridge": "^0.6.4"
+  }
+}
