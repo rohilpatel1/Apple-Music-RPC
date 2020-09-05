@@ -28,10 +28,10 @@ Once you run the app it should work.
 ### [Changelog]
 
 ##### v1.0 Dev Beta 2
-- Added MacOS support for versions greater than 10.5.
+- Added MacOS support for versions greater than or equal to 10.15.
 - Windows support has also been fixed with a few issues.
 - Minor bug fixes and update to elapsed time
-- New images
+- New images to match software for 2020
 
 #### v1.0 Dev Beta 1
 - Added Windows support
