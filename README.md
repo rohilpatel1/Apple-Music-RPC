@@ -3,6 +3,10 @@ Discord Rich Presense for Apple Music and iTunes (no subscription needed to work
 
 The **Apple Music RPC** works for both Windows and MacOS (only >= 10.15).
 
+## Prerequsites
+ + macOS 10.15 (Catilina) **or** iTunes on Windows
+ + A computer that can handle things in the background (preferably 8gb of RAM)
+
 Apple Music RPC allows for a Discord RPC connection between iTunes or Apple Music.
 The data will show the current song and artist that you are listening too. It will also show if the song is being played or paused.
 The song data will also show the elapsed time.
