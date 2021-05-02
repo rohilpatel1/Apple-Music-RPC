@@ -16,9 +16,9 @@ class iTunes {
   setup() {
     try {
       if (os.platform() == "win32") {
-        this.currentSong = JSON.parse(execSync(`cscript //Nologo ${LIBPATHWS} currentTrack`, { encoding: "utf8" }));
+        this.currentSong = JSON.parse(execSync(`cscript //Nologo "${LIBPATHWS}" currentTrack`, { encoding: "utf8" }));
       } else if (os.platform() == "darwin") {
-        this.currentSong = JSON.parse(execSync(`osascript ${LIBPATHOS} currentTrack`, { encoding: "utf8" }));
+        this.currentSong = JSON.parse(execSync(`osascript "${LIBPATHOS}" currentTrack`, { encoding: "utf8" }));
       }
     } catch (e) {
       this.currentSong = {
@@ -29,17 +29,17 @@ class iTunes {
 
   exec(option) {
     if (os.platform() == "win32") {
-      return JSON.parse(execSync(`cscript //Nologo ${LIBPATHWS} ${option}`, { encoding: "utf8" }));
+      return JSON.parse(execSync(`cscript //Nologo "${LIBPATHWS}" ${option}`, { encoding: "utf8" }));
     } else if (os.platform() == "darwin") {
-      return JSON.parse(execSync(`osascript ${LIBPATHOS} ${option}`, { encoding: "utf8" }));
+      return JSON.parse(execSync(`osascript "${LIBPATHOS}" ${option}`, { encoding: "utf8" }));
     }
   }
 
   getCurrentSong() {
     if (os.platform() == "win32") {
-      this.currentSong = JSON.parse(execSync(`cscript //Nologo ${LIBPATHWS} currentTrack`, { encoding: "utf8" }));
+      this.currentSong = JSON.parse(execSync(`cscript //Nologo "${LIBPATHWS}" currentTrack`, { encoding: "utf8" }));
     } else if (os.platform() == "darwin") {
-      this.currentSong = JSON.parse(execSync(`osascript ${LIBPATHOS} currentTrack`, { encoding: "utf8" }));
+      this.currentSong = JSON.parse(execSync(`osascript "${LIBPATHOS}" currentTrack`, { encoding: "utf8" }));
     }
     return this.currentSong;
   }

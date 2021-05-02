@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/rohilpatel1/iTunes-Discord-Rich-Presense#readme",
   "devDependencies": {
-    "electron": "^10.1.1"
+    "electron": "^10.1.1",
+    "electron-packager": "^15.2.0"
   },
   "dependencies": {
     "discord-rich-presence": "0.0.8",
